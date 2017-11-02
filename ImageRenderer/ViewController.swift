@@ -19,7 +19,10 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
 
-        let img = NSImage(size: view.bounds.size) { _ in
+        let img = NSImage(size: view.bounds.size) { (x: Int, y: Int) in
+            if x == y {
+                return Pixel(r: 0, g: 0, b: 0)
+            }
             return Pixel(r: 0, g: 255, b: 255)
         }
 

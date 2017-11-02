@@ -25,6 +25,8 @@ struct Pixel {
 
 extension NSImage {
 
+    typealias DataProvider = ((x: Int, y: Int)) -> Pixel
+
     // http://blog.human-friendly.com/drawing-images-from-pixel-data-in-swift
     convenience init(width: Int, height: Int, pixels: [Pixel]) {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
@@ -51,13 +53,14 @@ extension NSImage {
         self.init(cgImage: image, size: .zero)
     }
 
-    convenience init(size: CGSize, pixels: ((x: Int, y: Int)) -> Pixel) {
+    convenience init(size: CGSize, pixels: DataProvider) {
         var p: [Pixel] = []
         let height = Int(size.height)
         let width = Int(size.width)
 
-        for x in 0..<width {
+
             for y in 0..<height {
+                for x in 0..<width {
                 p.append(pixels((x, y)))
             }
         }
