@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -709,13 +710,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mip-Hh-NOH">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ohv-Yv-H6e">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="KlU-U7-9tv"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ohv-Yv-H6e" secondAttribute="height" multiplier="16:9" id="aBQ-md-HTu"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="pfb-Rd-pCZ"/>
                             </imageView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Ohv-Yv-H6e" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="1j8-Pl-yi0"/>
+                            <constraint firstAttribute="bottom" secondItem="Ohv-Yv-H6e" secondAttribute="bottom" id="9Qj-40-5wB"/>
+                            <constraint firstItem="Ohv-Yv-H6e" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="yWc-Kk-GZb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="Ohv-Yv-H6e" id="tiV-rk-DBL"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

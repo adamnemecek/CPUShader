@@ -51,6 +51,18 @@ extension NSImage {
         return NSImage(cgImage: image, size: .zero)
     }
 
+    static func from(width: Int, height: Int, pixels: ((x: Int, y: Int)) -> Pixel) -> NSImage {
+        var p: [Pixel] = []
+
+        for x in 0..<width {
+            for y in 0..<height {
+                p.append(pixels((x, y)))
+            }
+        }
+
+        return .from(width: width, height: height, pixels: p)
+    }
+
 
     func saveAsJpg(to url: URL) {
         let options: [NSBitmapImageRep.PropertyKey: Any] = [.compressionFactor: 1.0]
