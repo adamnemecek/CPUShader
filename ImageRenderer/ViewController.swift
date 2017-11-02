@@ -36,12 +36,8 @@ class ViewController: NSViewController {
 
         let c = float2(cg: view.bounds.center)
 
-
         let img = NSImage(size: view.bounds.size) { p in
-
-
-            if p.x == p.y {
-
+            if distance(c, p) < 10 {
                 return Pixel(r: 0, g: 0, b: 0)
             }
             return Pixel(r: 0, g: 255, b: 255)
