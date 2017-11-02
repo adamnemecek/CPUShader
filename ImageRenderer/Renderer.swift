@@ -26,7 +26,7 @@ struct Pixel {
 extension NSImage {
 
     // http://blog.human-friendly.com/drawing-images-from-pixel-data-in-swift
-    static func from(width: Int, height: Int, pixels: [Pixel]) -> NSImage {
+    convenience init(width: Int, height: Int, pixels: [Pixel]) {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
 
@@ -48,10 +48,10 @@ extension NSImage {
                                   decode: nil,
                                   shouldInterpolate: true,
                                   intent: .defaultIntent) else { fatalError("Couldn't create CGImage") }
-        return NSImage(cgImage: image, size: .zero)
+        self.init(cgImage: image, size: .zero)
     }
 
-    static func from(size: CGSize, pixels: ((x: Int, y: Int)) -> Pixel) -> NSImage {
+    convenience init(size: CGSize, pixels: ((x: Int, y: Int)) -> Pixel) {
         var p: [Pixel] = []
         let height = Int(size.height)
         let width = Int(size.width)
@@ -62,7 +62,7 @@ extension NSImage {
             }
         }
 
-        return .from(width: width, height: height, pixels: p)
+        self.init(width: width, height: height, pixels: p)
     }
 
 
