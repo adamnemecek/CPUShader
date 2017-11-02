@@ -34,10 +34,11 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let c = float2(cg: view.bounds.center)
+        let uv = float2(cg: view.bounds.center)
 
         let img = NSImage(size: view.bounds.size) { p in
-            if distance(c, p) < 10 {
+
+            if distance(uv, p) < 10 {
                 return Pixel(r: 0, g: 0, b: 0)
             }
             return Pixel(r: 0, g: 255, b: 255)
