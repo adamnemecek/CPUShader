@@ -34,15 +34,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let r = RenderableImage<CircleRenderer>(rect: view.bounds)
-
-//        let img = NSImage(size: view.bounds.size) { p in
-//
-//            if distance(uv, p) < 10 {
-//                return Pixel(r: 0, g: 0, b: 0)
-//            }
-//            return Pixel(r: 0, g: 255, b: 255)
-//        }
+        let r = ImageRenderer<RoundedRectRenderer>(rect: view.bounds)
 
         imageView.image = r.image
         // Do any additional setup after loading the view.

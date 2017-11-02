@@ -21,6 +21,12 @@ struct Pixel {
         self.g = g
         self.b = b
     }
+
+    static func *(lhs: Pixel, rhs: Float) -> Pixel {
+        return Pixel(r: UInt8(Float(lhs.r) * rhs),
+                     g: UInt8(Float(lhs.g) * rhs),
+                     b: UInt8(Float(lhs.b) * rhs))
+    }
 }
 
 extension CGBitmapInfo {
