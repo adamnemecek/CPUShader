@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import simd
 
 struct Pixel {
     var a: UInt8 = 255
@@ -22,21 +23,23 @@ struct Pixel {
     }
 }
 
+extension CGBitmapInfo {
+    static let premultipliedFirst = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
+}
+
 
 extension NSImage {
 
-    typealias DataProvider = ((x: Int, y: Int)) -> Pixel
+    typealias DataProvider = (float2) -> Pixel
 
     // http://blog.human-friendly.com/drawing-images-from-pixel-data-in-swift
     convenience init(width: Int, height: Int, pixels: [Pixel]) {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo: CGBitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)
 
         assert(pixels.count == Int(width * height))
 
         var data = pixels // Copy to mutable []
-        guard
-            let providerRef = CGDataProvider(data: NSData(bytes: &data, length: data.count * MemoryLayout<Pixel>.size))
+        guard let providerRef = CGDataProvider(data: NSData(bytes: &data, length: data.count * MemoryLayout<Pixel>.size))
             else { fatalError("no cg data provider") }
 
         guard let image = CGImage(width: width,
@@ -45,7 +48,7 @@ extension NSImage {
                                   bitsPerPixel: 32,
                                   bytesPerRow: width * MemoryLayout<Pixel>.size,
                                   space: rgbColorSpace,
-                                  bitmapInfo: bitmapInfo,
+                                  bitmapInfo: .premultipliedFirst,
                                   provider: providerRef,
                                   decode: nil,
                                   shouldInterpolate: true,
@@ -58,10 +61,9 @@ extension NSImage {
         let height = Int(size.height)
         let width = Int(size.width)
 
-
-            for y in 0..<height {
-                for x in 0..<width {
-                p.append(pixels((x, y)))
+        for y in 0..<height {
+            for x in 0..<width {
+                p.append(pixels(.init(Float(x), Float(y))))
             }
         }
 
@@ -70,11 +72,12 @@ extension NSImage {
 
 
     func saveAsJpg(to url: URL) {
-        let options: [NSBitmapImageRep.PropertyKey: Any] = [.compressionFactor: 1.0]
+
         guard
             let imageData = tiffRepresentation,
             let bitmapImageRep = NSBitmapImageRep(data: imageData),
-            let data = bitmapImageRep.representation(using: .jpeg, properties: options)
+            let data = bitmapImageRep.representation(using: .jpeg,
+                                                     properties: [.compressionFactor: 1.0])
             else { return }
         try? data.write(to: url, options: [])
     }

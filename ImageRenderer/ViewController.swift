@@ -7,9 +7,25 @@
 //
 
 import Cocoa
+import simd
 
-extension NSImage {
-    
+/*
+ float roundedFrame (float2 pos, float2 uv, float2 size, float radius, float thickness) {
+ float d = length(max(abs(uv - pos),size) - size) - radius;
+ return smoothstep(0.55, 0.45, abs(d / thickness) * 5.0);
+ }
+ */
+
+extension CGRect {
+    var center : CGPoint {
+        return .init(x: midX, y: midY)
+    }
+}
+
+extension float2 {
+    init(cg : CGPoint) {
+        self.init(Float(cg.x), Float(cg.y))
+    }
 }
 
 class ViewController: NSViewController {
@@ -18,9 +34,14 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let c = float2(cg: view.bounds.center)
 
-        let img = NSImage(size: view.bounds.size) { (x: Int, y: Int) in
-            if x == y {
+
+        let img = NSImage(size: view.bounds.size) { p in
+
+
+            if p.x == p.y {
+
                 return Pixel(r: 0, g: 0, b: 0)
             }
             return Pixel(r: 0, g: 255, b: 255)
