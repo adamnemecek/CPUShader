@@ -8,6 +8,10 @@
 
 import Cocoa
 
+extension NSImage {
+    
+}
+
 class ViewController: NSViewController {
 
     override func viewDidLoad() {
