@@ -51,8 +51,10 @@ extension NSImage {
         return NSImage(cgImage: image, size: .zero)
     }
 
-    static func from(width: Int, height: Int, pixels: ((x: Int, y: Int)) -> Pixel) -> NSImage {
+    static func from(size: CGSize, pixels: ((x: Int, y: Int)) -> Pixel) -> NSImage {
         var p: [Pixel] = []
+        let height = Int(size.height)
+        let width = Int(size.width)
 
         for x in 0..<width {
             for y in 0..<height {
