@@ -13,7 +13,7 @@
 		375366161FAB656600DDD3B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375366141FAB656600DDD3B8 /* Main.storyboard */; };
 		375366221FAB656700DDD3B8 /* ImageRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375366211FAB656700DDD3B8 /* ImageRendererTests.swift */; };
 		3753662D1FAB656700DDD3B8 /* ImageRendererUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753662C1FAB656700DDD3B8 /* ImageRendererUITests.swift */; };
-		3753663B1FAB6F5E00DDD3B8 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753663A1FAB6F5E00DDD3B8 /* Renderer.swift */; };
+		3753663B1FAB6F5E00DDD3B8 /* Aux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753663A1FAB6F5E00DDD3B8 /* Aux.swift */; };
 		3753663D1FAB736800DDD3B8 /* Renderers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3753663C1FAB736800DDD3B8 /* Renderers.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +48,7 @@
 		375366281FAB656700DDD3B8 /* ImageRendererUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageRendererUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3753662C1FAB656700DDD3B8 /* ImageRendererUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRendererUITests.swift; sourceTree = "<group>"; };
 		3753662E1FAB656700DDD3B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3753663A1FAB6F5E00DDD3B8 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		3753663A1FAB6F5E00DDD3B8 /* Aux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aux.swift; sourceTree = "<group>"; };
 		3753663C1FAB736800DDD3B8 /* Renderers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +102,7 @@
 			children = (
 				3753660E1FAB656600DDD3B8 /* AppDelegate.swift */,
 				375366101FAB656600DDD3B8 /* ViewController.swift */,
-				3753663A1FAB6F5E00DDD3B8 /* Renderer.swift */,
+				3753663A1FAB6F5E00DDD3B8 /* Aux.swift */,
 				3753663C1FAB736800DDD3B8 /* Renderers.swift */,
 				375366121FAB656600DDD3B8 /* Assets.xcassets */,
 				375366141FAB656600DDD3B8 /* Main.storyboard */,
@@ -265,7 +265,7 @@
 			files = (
 				3753663D1FAB736800DDD3B8 /* Renderers.swift in Sources */,
 				375366111FAB656600DDD3B8 /* ViewController.swift in Sources */,
-				3753663B1FAB6F5E00DDD3B8 /* Renderer.swift in Sources */,
+				3753663B1FAB6F5E00DDD3B8 /* Aux.swift in Sources */,
 				3753660F1FAB656600DDD3B8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

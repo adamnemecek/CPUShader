@@ -1,5 +1,5 @@
 //
-//  Renderer.swift
+//  Aux.swift
 //  ImageRenderer
 //
 //  Created by Adam Nemecek on 11/2/17.
